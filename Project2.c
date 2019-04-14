@@ -1,83 +1,92 @@
 #include<stdlib.h>
 #include<stdio.h>
 #include<conio.h>
-int Previous=145;
-int Current=143;
-int Check(int Variable)
+int p_request=145;
+int c_request=143;
+int Find(int v)
 {
-	if(Variable>0)
+	if(v>0)
 	{
-		return Variable;
+		return v;
 	}
 	else
 	{
-		return (Variable*-1);
+		return (v*-1);
 	}
 }
 int main()
 {
-	int Queue[] = {86, 1470, 913, 1774, 948, 1509, 1022, 1750, 130};
-	int i,Start,Length=sizeof(Queue)/sizeof(int),Distance=0,Last,First,a,j;
-	 for (i = 0; i < Length; ++i) 
+	printf("\t\t\t\t\t************************************************************************************************\n");
+	printf("\t\t\t\t\t************************************************************************************************\n");
+	printf("\t\t\t\t\t***\t\t\t\t\t\t\t\t\t\t                     ***\n");
+	printf("\t\t\t\t\t***\t\t\t\t\t\t\t\t\t\t                     ***\n");
+	printf("\t\t\t\t\t***\t\t\tPROBLEM BASED ON C-LOOK DISK SCHEDULING ALGORITHM                    ***\n");
+	printf("\t\t\t\t\t***\t\t\t\t\t\t\t\t\t\t                     ***\n");
+	printf("\t\t\t\t\t***\t\t\t\t\t\t\t\t\t\t                     ***\n");
+	printf("\t\t\t\t\t************************************************************************************************\n");
+	printf("\t\t\t\t\t************************************************************************************************\n\n\n\n");
+	int queue[] = {86, 1470, 913, 1774, 948, 1509, 1022, 1750, 130};
+	int m,Begin,l=sizeof(queue)/sizeof(int),d=0,End,initial,pt,n;
+	 for (m = 0; m < l; ++m) 
         {
-            for (j = i + 1; j < Length; ++j)
+            for (n = m + 1; n < l; ++n)
             {
-                if (Queue[i] > Queue[j]) 
+                if (queue[m] > queue[n]) 
                 {
-                    a =  Queue[i];
-                    Queue[i] = Queue[j];
-                    Queue[j] = a;
+                    pt =  queue[m];
+                    queue[m] = queue[n];
+                    queue[n] = pt;
                 }
             } 
         }
-        Last = Current;
-    if(Current>=Previous){
-        for(i=0; i<Length; i++){
-            if(Queue[i]>Current){
-                Start=i;
+        End = c_request;
+    if(c_request>=p_request){
+        for(m=0; m<l; m++){
+            if(queue[m]>c_request){
+                Begin=m;
                 break;
             }
         }
-        printf("Order    : %4d",Last);
-        for(i=Start; i<Length; i++){
-            printf(", %4d",Queue[i]);
-             for(i=Start; i<Length; i++)
-        for(i=Start; i>0; i--){
-            printf(", %4d",Queue[i-1]);
-            First = Queue[i];
+        printf("Order    : %4d",End);
+        for(m=Begin; m<l; m++){
+            printf(", %4d",queue[m]);
+             for(m=Begin; m<l; m++)
+        for(m=Begin; m>0; m--){
+            printf(", %4d",queue[m-1]);
+            initial = queue[m];
 
-            Distance+= Check(Last-First);
-            printf("[%d]",Check(Last-First) );
-            Last = First;
+            d+= Find(End-initial);
+            printf("[%d]",Find(End-initial) );
+            End = initial;
         }
 }
 }
-      else if(Current<Previous){
-        for(i=0; i<Length; i++){
-            if(Queue[i]>Current){
-                Start=i;
+      else if(c_request<p_request){
+        for(m=0; m<l; m++){
+            if(queue[m]>c_request){
+                Begin=m;
                 break;
             }
         }
-        printf("Sequence : %4d",Last);
-        for(i=Start-1; i>=0; i--){
-            printf(", %4d",Queue[i]);
-            First = Queue[i];
+        printf("Sequence : %4d",End);
+        for(m=Begin-1; m>=0; m--){
+            printf(", %4d",queue[m]);
+            initial = queue[m];
 
-            Distance+= Check(Last-First);
-            printf("[%d]",Check(Last-First) );
-            Last = First;
+            d+= Find(End-initial);
+            printf("[%d]",Find(End-initial) );
+            End = initial;
         }
-        for(i=Start; i<Length; i++){
-            printf(", %4d",Queue[i]);
-            First = Queue[i];
+        for(m=Begin; m<l; m++){
+            printf(", %4d",queue[m]);
+            initial = queue[m];
 
-            Distance+= Check(Last-First);
-            printf("[%d]",Check(Last-First) );
-            Last = First;
+            d+= Find(End-initial);
+            printf("[%d]",Find(End-initial) );
+            End = initial;
         }
     }
-    printf("\nTotal Distance : %d\n",Distance);
+    printf("\n\n\nTotal Distance : %d\n",d);
     return 0;
     getch();
 }
