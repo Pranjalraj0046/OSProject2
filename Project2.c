@@ -77,7 +77,7 @@ int main()
             Last = First;
         }
     }
-    printf("\nDistance : %d\n",Distance);
+    printf("\nTotal Distance : %d\n",Distance);
     return 0;
     getch();
 }
