@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<stdbool.h>
-
+#include<windows.h>
 struct cylinder
 {
 	int r_no;
@@ -10,11 +10,19 @@ struct cylinder
 
 int main()
 {
+	int i;
+	char h[]={'P','R','O','B','L','E','M',' ','B','A','S','E','D',' ','O','N',' ','C','-','L','O','O','K',' ','D','I','S','K',' ','S','C','H','E','D','U','L','I','N','G',' ','A','L','G','O','R','I','T','H','M'};
 	printf("\n\n\t\t\t\t\t************************************************************************************************\n");
 	printf("\t\t\t\t\t************************************************************************************************\n");
 	printf("\t\t\t\t\t***\t\t\t\t\t\t\t\t\t\t                     ***\n");
 	printf("\t\t\t\t\t***\t\t\t\t\t\t\t\t\t\t                     ***\n");
-	printf("\t\t\t\t\t***\t\t\tPROBLEM BASED ON C-LOOK DISK SCHEDULING ALGORITHM                    ***\n");
+	printf("\t\t\t\t\t***\t\t\t");
+		for(i=0;i<strlen(h)-2;i++)
+	{
+		printf("%c",h[i]);
+		Sleep(300);
+	}
+	printf("                    ***\n");
 	printf("\t\t\t\t\t***\t\t\t\t\t\t\t\t\t\t                     ***\n");
 	printf("\t\t\t\t\t***\t\t\t\t\t\t\t\t\t\t                     ***\n");
 	printf("\t\t\t\t\t************************************************************************************************\n");
